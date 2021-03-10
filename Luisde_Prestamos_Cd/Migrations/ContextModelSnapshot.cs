@@ -26,6 +26,9 @@ namespace Luisde_Prestamos_Cd.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
+
                     b.Property<int>("codigoCliente")
                         .HasColumnType("int");
 
@@ -40,7 +43,9 @@ namespace Luisde_Prestamos_Cd.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("alquiler");
+                    b.HasIndex("ClienteId");
+
+                    b.ToTable("Alquileres");
                 });
 
             modelBuilder.Entity("Luisde_Prestamos_Cd.models.Cd", b =>
@@ -50,24 +55,24 @@ namespace Luisde_Prestamos_Cd.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("codigoTitulo")
+                    b.Property<int>("CodigoTitulo")
                         .HasColumnType("int");
 
-                    b.Property<string>("condicion")
+                    b.Property<string>("Condicion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("estado")
+                    b.Property<bool>("Estado")
                         .HasColumnType("bit");
 
-                    b.Property<int>("noCd")
+                    b.Property<int>("NoCd")
                         .HasColumnType("int");
 
-                    b.Property<string>("ubicacion")
+                    b.Property<string>("Ubicacion")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("cd");
+                    b.ToTable("Cds");
                 });
 
             modelBuilder.Entity("Luisde_Prestamos_Cd.models.Cliente", b =>
@@ -77,39 +82,36 @@ namespace Luisde_Prestamos_Cd.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("codigoCliente")
-                        .HasColumnType("int");
-
-                    b.Property<string>("correo")
+                    b.Property<string>("Correo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("direccion")
+                    b.Property<string>("Direccion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("estado")
+                    b.Property<bool>("Estado")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("fechaInscripcion")
+                    b.Property<DateTime>("FechaInscripcion")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("fechaNacimiento")
+                    b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("nombre")
+                    b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("nroDNI")
+                    b.Property<int>("NroDNI")
                         .HasColumnType("int");
 
-                    b.Property<string>("telefono")
+                    b.Property<string>("Telefono")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("temaInteres")
+                    b.Property<string>("TemaInteres")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("cliente");
+                    b.ToTable("Clientes");
                 });
 
             modelBuilder.Entity("Luisde_Prestamos_Cd.models.DetalleAlquiler", b =>
@@ -119,27 +121,31 @@ namespace Luisde_Prestamos_Cd.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("codigoTitulo")
+                    b.Property<int>("AlquilerId")
                         .HasColumnType("int");
 
-                    b.Property<string>("diasPrestamo")
+                    b.Property<int>("CdId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CodigoTitulo")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DiasPrestamo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("fechaDevolucion")
+                    b.Property<DateTime>("FechaDevolucion")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("item")
+                    b.Property<string>("Item")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("noAlquiler")
-                        .HasColumnType("int");
-
-                    b.Property<int>("noCd")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("detalleAlquiler");
+                    b.HasIndex("AlquilerId");
+
+                    b.HasIndex("CdId");
+
+                    b.ToTable("DetalleAlquileres");
                 });
 
             modelBuilder.Entity("Luisde_Prestamos_Cd.models.Sancion", b =>
@@ -149,24 +155,64 @@ namespace Luisde_Prestamos_Cd.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("codigoCliente")
+                    b.Property<int>("AlquilerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("noAlquiler")
+                    b.Property<int>("NoDiasSancion")
                         .HasColumnType("int");
 
-                    b.Property<int>("noDiasSancion")
+                    b.Property<int>("NoSancion")
                         .HasColumnType("int");
 
-                    b.Property<int>("noSancion")
-                        .HasColumnType("int");
-
-                    b.Property<string>("tipoSancion")
+                    b.Property<string>("TipoSancion")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("sancion");
+                    b.HasIndex("AlquilerId");
+
+                    b.ToTable("Sanciones");
+                });
+
+            modelBuilder.Entity("Luisde_Prestamos_Cd.models.Alquiler", b =>
+                {
+                    b.HasOne("Luisde_Prestamos_Cd.models.Cliente", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
+                });
+
+            modelBuilder.Entity("Luisde_Prestamos_Cd.models.DetalleAlquiler", b =>
+                {
+                    b.HasOne("Luisde_Prestamos_Cd.models.Alquiler", "Alquiler")
+                        .WithMany()
+                        .HasForeignKey("AlquilerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Luisde_Prestamos_Cd.models.Cd", "Cd")
+                        .WithMany()
+                        .HasForeignKey("CdId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Alquiler");
+
+                    b.Navigation("Cd");
+                });
+
+            modelBuilder.Entity("Luisde_Prestamos_Cd.models.Sancion", b =>
+                {
+                    b.HasOne("Luisde_Prestamos_Cd.models.Alquiler", "Alquiler")
+                        .WithMany()
+                        .HasForeignKey("AlquilerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Alquiler");
                 });
 #pragma warning restore 612, 618
         }

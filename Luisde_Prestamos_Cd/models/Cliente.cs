@@ -5,15 +5,14 @@ namespace Luisde_Prestamos_Cd.models
     public class Cliente
     {
         public int Id { get; set; }
-        public int codigoCliente { get; set; }
-        public string direccion { get; set; }
-        public string telefono { get; set; }
-        public string nombre { get; set; }
-        public string correo { get; set; }
-        public int nroDNI { get; set; }
-        public DateTime fechaNacimiento { get; set; }
-        public DateTime fechaInscripcion { get; set; }
-        public string temaInteres { get; set; }
-        public bool estado { get; set; }
+        public string Direccion { get; set; }
+        public string Telefono { get; set; }
+        public string Nombre { get; set; }
+        public string Correo { get; set; }
+        public int NroDNI { get; set; }
+        public DateTime FechaNacimiento { get; set; }
+        public DateTime FechaInscripcion { get; set; }
+        public string TemaInteres { get; set; }
+        public bool Estado { get; set; }
     }
 }

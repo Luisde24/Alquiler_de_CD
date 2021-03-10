@@ -8,10 +8,10 @@ namespace Luisde_Prestamos_Cd.models
     public class Sancion
     {
         public int Id { get; set; }
-        public int noSancion { get; set; }
-        public int codigoCliente { get; set; }
-        public int noAlquiler { get; set; }
-        public string tipoSancion { get; set; }
-        public int noDiasSancion { get; set; }
+        public int NoSancion { get; set; }
+        public string TipoSancion { get; set; }
+        public int NoDiasSancion { get; set; } 
+        public int AlquilerId { get; set; }
+        public Alquiler Alquiler { get; set; }
     }
 }

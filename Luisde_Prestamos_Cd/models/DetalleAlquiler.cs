@@ -8,12 +8,14 @@ namespace Luisde_Prestamos_Cd.models
     public class DetalleAlquiler
     {
         public int Id { get; set; }
-        public int noAlquiler { get; set; }
-        public string item { get; set; }
-        public int codigoTitulo { get; set; }
-        public int noCd { get; set; }
-        public string diasPrestamo { get; set; }
-        public DateTime fechaDevolucion { get; set; }
+        public string Item { get; set; }
+        public int CodigoTitulo { get; set; }
+        public string DiasPrestamo { get; set; }
+        public DateTime FechaDevolucion { get; set; }
+        public int AlquilerId { get; set; }
+        public Alquiler Alquiler { get; set; }
+        public int CdId { get; set; }
+        public Cd Cd { get; set; }
 
     }
 }

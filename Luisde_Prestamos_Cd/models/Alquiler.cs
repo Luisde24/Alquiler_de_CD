@@ -12,6 +12,9 @@ namespace Luisde_Prestamos_Cd.models
         public int codigoCliente { get; set; }
         public DateTime fechaAlquiler { get; set; }
         public double valorAlquiler { get; set; }
+        public int ClienteId { get; set; }
+        public Cliente Cliente { get; set; }
+
 
     }
 }

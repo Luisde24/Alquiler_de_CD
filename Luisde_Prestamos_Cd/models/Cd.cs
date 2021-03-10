@@ -8,10 +8,10 @@ namespace Luisde_Prestamos_Cd.models
     public class Cd
     {
         public int Id { get; set; }
-        public int codigoTitulo { get; set; }
-        public int noCd { get; set; }
-        public string condicion { get; set; }
-        public string ubicacion { get; set; }
-        public bool estado { get; set; }
+        public int CodigoTitulo { get; set; }
+        public int NoCd { get; set; }
+        public string Condicion { get; set; }
+        public string Ubicacion { get; set; }
+        public bool Estado { get; set; }
     }
 }
