@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Luisde_Prestamos_Cd.models
 {
-    public class DetalleAlquiler
+    public class DetalleAlquileres
     {
         public int Id { get; set; }
         public string Item { get; set; }
@@ -13,9 +13,9 @@ namespace Luisde_Prestamos_Cd.models
         public string DiasPrestamo { get; set; }
         public DateTime FechaDevolucion { get; set; }
         public int AlquilerId { get; set; }
-        public Alquiler Alquiler { get; set; }
+        public Alquileres Alquiler { get; set; }
         public int CdId { get; set; }
-        public Cd Cd { get; set; }
+        public Cds Cd { get; set; }
 
     }
 }

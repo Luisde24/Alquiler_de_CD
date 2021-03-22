@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Luisde_Prestamos_Cd.models
+namespace Luisde_Prestamos_Cd.ViewModels
 {
-    public class Cd
+    public class CdViewModels
     {
         public int Id { get; set; }
         public int CodigoTitulo { get; set; }

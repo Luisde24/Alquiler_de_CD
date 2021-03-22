@@ -12,11 +12,11 @@ namespace Luisde_Prestamos_Cd.models
         {
 
         }
-      public DbSet<Cliente> Clientes { get; set;}
-      public DbSet<Cd> Cds { get; set; }
-      public DbSet<Alquiler> Alquileres { get; set; }
-      public DbSet<DetalleAlquiler> DetalleAlquileres { get; set; }
-      public DbSet<Sancion> Sanciones { get; set; }
+      public DbSet<Clientes> Clientes { get; set;}
+      public DbSet<Cds> Cds { get; set; }
+      public DbSet<Alquileres> Alquileres { get; set; }
+      public DbSet<DetalleAlquileres> DetalleAlquileres { get; set; }
+      public DbSet<Sanciones> Sanciones { get; set; }
       
      
      

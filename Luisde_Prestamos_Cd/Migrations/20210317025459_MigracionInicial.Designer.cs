@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Luisde_Prestamos_Cd.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210310031138_MigracionInicial")]
+    [Migration("20210317025459_MigracionInicial")]
     partial class MigracionInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace Luisde_Prestamos_Cd.Migrations
                 .HasAnnotation("ProductVersion", "5.0.3")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Luisde_Prestamos_Cd.models.Alquiler", b =>
+            modelBuilder.Entity("Luisde_Prestamos_Cd.models.Alquileres", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -29,9 +29,6 @@ namespace Luisde_Prestamos_Cd.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ClienteId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("codigoCliente")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("fechaAlquiler")
@@ -50,7 +47,7 @@ namespace Luisde_Prestamos_Cd.Migrations
                     b.ToTable("Alquileres");
                 });
 
-            modelBuilder.Entity("Luisde_Prestamos_Cd.models.Cd", b =>
+            modelBuilder.Entity("Luisde_Prestamos_Cd.models.Cds", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -77,7 +74,7 @@ namespace Luisde_Prestamos_Cd.Migrations
                     b.ToTable("Cds");
                 });
 
-            modelBuilder.Entity("Luisde_Prestamos_Cd.models.Cliente", b =>
+            modelBuilder.Entity("Luisde_Prestamos_Cd.models.Clientes", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -116,7 +113,7 @@ namespace Luisde_Prestamos_Cd.Migrations
                     b.ToTable("Clientes");
                 });
 
-            modelBuilder.Entity("Luisde_Prestamos_Cd.models.DetalleAlquiler", b =>
+            modelBuilder.Entity("Luisde_Prestamos_Cd.models.DetalleAlquileres", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -150,7 +147,7 @@ namespace Luisde_Prestamos_Cd.Migrations
                     b.ToTable("DetalleAlquileres");
                 });
 
-            modelBuilder.Entity("Luisde_Prestamos_Cd.models.Sancion", b =>
+            modelBuilder.Entity("Luisde_Prestamos_Cd.models.Sanciones", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -176,9 +173,9 @@ namespace Luisde_Prestamos_Cd.Migrations
                     b.ToTable("Sanciones");
                 });
 
-            modelBuilder.Entity("Luisde_Prestamos_Cd.models.Alquiler", b =>
+            modelBuilder.Entity("Luisde_Prestamos_Cd.models.Alquileres", b =>
                 {
-                    b.HasOne("Luisde_Prestamos_Cd.models.Cliente", "Cliente")
+                    b.HasOne("Luisde_Prestamos_Cd.models.Clientes", "Cliente")
                         .WithMany()
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -187,15 +184,15 @@ namespace Luisde_Prestamos_Cd.Migrations
                     b.Navigation("Cliente");
                 });
 
-            modelBuilder.Entity("Luisde_Prestamos_Cd.models.DetalleAlquiler", b =>
+            modelBuilder.Entity("Luisde_Prestamos_Cd.models.DetalleAlquileres", b =>
                 {
-                    b.HasOne("Luisde_Prestamos_Cd.models.Alquiler", "Alquiler")
+                    b.HasOne("Luisde_Prestamos_Cd.models.Alquileres", "Alquiler")
                         .WithMany()
                         .HasForeignKey("AlquilerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Luisde_Prestamos_Cd.models.Cd", "Cd")
+                    b.HasOne("Luisde_Prestamos_Cd.models.Cds", "Cd")
                         .WithMany()
                         .HasForeignKey("CdId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -206,9 +203,9 @@ namespace Luisde_Prestamos_Cd.Migrations
                     b.Navigation("Cd");
                 });
 
-            modelBuilder.Entity("Luisde_Prestamos_Cd.models.Sancion", b =>
+            modelBuilder.Entity("Luisde_Prestamos_Cd.models.Sanciones", b =>
                 {
-                    b.HasOne("Luisde_Prestamos_Cd.models.Alquiler", "Alquiler")
+                    b.HasOne("Luisde_Prestamos_Cd.models.Alquileres", "Alquiler")
                         .WithMany()
                         .HasForeignKey("AlquilerId")
                         .OnDelete(DeleteBehavior.Cascade)

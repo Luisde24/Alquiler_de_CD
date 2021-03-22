@@ -52,7 +52,6 @@ namespace Luisde_Prestamos_Cd.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     noAlquiler = table.Column<int>(type: "int", nullable: false),
-                    codigoCliente = table.Column<int>(type: "int", nullable: false),
                     fechaAlquiler = table.Column<DateTime>(type: "datetime2", nullable: false),
                     valorAlquiler = table.Column<double>(type: "float", nullable: false),
                     ClienteId = table.Column<int>(type: "int", nullable: false)

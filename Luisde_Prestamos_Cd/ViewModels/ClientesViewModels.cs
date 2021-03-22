@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Luisde_Prestamos_Cd.models
+namespace Luisde_Prestamos_Cd.ViewModels
 {
-    public class Cliente
+    public class ClientesViewModels
     {
         public int Id { get; set; }
         public string Direccion { get; set; }
@@ -14,5 +17,6 @@ namespace Luisde_Prestamos_Cd.models
         public DateTime FechaInscripcion { get; set; }
         public string TemaInteres { get; set; }
         public bool Estado { get; set; }
+
     }
 }
